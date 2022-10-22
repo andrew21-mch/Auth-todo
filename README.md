@@ -15,13 +15,14 @@ This is a simple todo API with authentication. It is built with Node.js, Express
 
 ## Usage
 
-1. Register a user
-2. Login with the user
-3. Create a todo
-4. Get all todos
-5. Get a single todo
-6. Update a todo
-7. Delete a todo
+1. `api/register` Register a user
+2. `api/login` Login with the user
+3. `api/todo/create` Create a todo
+4. `api/todo/get` Get all todos
+5. `api/todo/get/{id}`Get a single todo
+6. `api/todo/edit/{id}` Update a todo
+7. `api/todo/delete/{id}` Delete a todo
+8. `api/logout` Logout the user
 
 ## Contributing
 
