@@ -19,6 +19,12 @@ class UserAuthController extends Controller
         ]);
     }
 
+    public function getUsers(){
+        $users = User::all();
+        return response()->json([
+            'users'=>$users
+        ]);
+    }
     public function login(Request $request)
     {
         $user = User::where('email', $request->email)->first();
@@ -67,7 +73,7 @@ class UserAuthController extends Controller
         return [
             'message' => 'Logged out'
         ];
-        
+
 
     }
 

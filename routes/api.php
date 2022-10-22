@@ -24,11 +24,16 @@ Route::group( ['middleware' => 'auth:sanctum' ], function () {
     Route::get('/todo/get', [TodoController::class, 'getTodos']);
     Route::get('/todo/get/{id}', [TodoController::class, 'getTodoById']);
     Route::post('/logout', [UserAuthController::class, 'logout']);
+
+
+    // users endpoints
 });
 
 Route::get('/home', [UserAuthController::class, 'home']);
 Route::post('/register', [UserAuthController::class, 'register']);
 Route::post('/login', [UserAuthController::class, 'login']);
+Route::get('/users', [UserAuthController::class, 'getUsers']);
+
 
 
 
