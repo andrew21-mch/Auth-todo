@@ -15,20 +15,33 @@ This is a simple todo API with authentication. It is built with Node.js, Express
 
 ## Usage
 
-1. `api/register` Register a user
-2. `api/login` Login with the user
-3. `api/todo/create` Create a todo
-4. `api/todo/get` Get all todos
-5. `api/todo/get/{id}`Get a single todo
-6. `api/todo/edit/{id}` Update a todo
-7. `api/todo/delete/{id}` Delete a todo
-8. `api/logout` Logout the user
+<!-- use table -->
+
+| Method | Endpoint | Description |
+| ------ | -------- | ----------- |
+| POST | `api/register` | Register a new user |
+| POST | `api/login` | Login a user |
+| GET | `api/todo/get` | Get all todos |
+| POST | `api/todo/create` | Create a new todo |
+| GET | `/api/todo/:id` | Get a single todo |
+| PUT | `/api/todo/edit/:id` | Update a todo |
+| DELETE | `/api/todo/delete/:id` | Delete a todo |
+
 
 ## Contributing
 
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
 Please make sure to update tests as appropriate.
+
+###  How to Contribute
+
+1. Fork it
+2. clone it using `git clone <repo url>`
+3. Create your feature branch (`git checkout -b my-new-feature`)
+4. Commit your changes (`git commit -am 'Add some feature`)
+5. Push to the branch (`git push origin my-new-feature`)
+6. Create new Pull Request
 
 ## License
 
