@@ -33,25 +33,33 @@ class UserAuthController extends Controller
     }
     public function login(Request $request)
     {
+        // validate the request and return the error if any validation fails as a json response
+        $request->validate([
+            'email' => 'required|email',
+            'password' => 'required'
+        ]);
+
+        // get the user by email
         $user = User::where('email', $request->email)->first();
-        if(!$user){
+
+        // check if the user exists and the password is correct
+        if (!$user || !Hash::check($request->password, $user->password)) {
             return response()->json([
-                'message' => 'UNo such user found'
-            ], 404);
+                'message' => 'The provided credentials are incorrect.'
+            ], 401);
         }
-        if(!Hash::check($request->password, $user->password)){
-            return response()->json([
-                'message' => 'Incorrect password'
-            ], 404);
-        }
-        $token = $user->createToken('token')->plainTextToken;
-        $response = [
-            'user' => $user,
-            'token' => $token
-        ];
-        return response($response, 201);
+
+        // generate a token for the user
+        $token = $user->createToken('my-app-token')->plainTextToken;
+
+        // return the token as a json response
+        return response()->json([
+            'token' => $token,
+            'user' => $user
+        ]);
 
     }
+
 
     public function register(Request $request)
     {
@@ -70,7 +78,9 @@ class UserAuthController extends Controller
             'user' => $user,
             'token' => $token
         ];
-        return response($response, 201);
+        return response()->json(
+            $response, 201
+        );
     }
 
     public function logout(){
